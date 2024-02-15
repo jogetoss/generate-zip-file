@@ -1,0 +1,64 @@
+[
+    {
+        "title": "@@generateZipTool.config@@",
+        "properties": [
+            {
+                "label" : "@@generateZipTool.from@@",
+                "type" : "header"
+            },
+            {
+                "name": "formDefId",
+                "label": "@@generateZipTool.form@@",
+                "type": "selectbox",
+                "options_ajax": "[CONTEXT_PATH]/web/json/console/app[APP_PATH]/forms/options",
+                "required": "True"
+            },
+            {
+                "name": "formField",
+                "label": "@@generateZipTool.form.formField@@",
+                "type" : "TextField",
+                "required" : "True"
+            },
+            {
+                "name": "formRecordId",
+                "label": "@@generateZipTool.recordId@@",
+                "type" : "TextField",
+                "required" : "True"
+            },
+            {
+                "label" : "@@generateZipTool.to@@",
+                "type" : "header"
+            },
+            {
+                "name": "targetFormId",
+                "label": "@@generateZipTool.targetFormId@@",
+                "type": "selectbox",
+                "options_ajax": "[CONTEXT_PATH]/web/json/console/app[APP_PATH]/forms/options",
+                "required": "True"
+            },            
+            {
+                "name": "targetFormField",
+                "label": "@@generateZipTool.targetFormField@@",
+                "type" : "TextField",
+                "required" : "True"
+            },
+            {
+                "name": "targetRecordId",
+                "label": "@@generateZipTool.targetRecordId@@",
+                "type" : "TextField",
+                "required" : "True"
+            },
+            {
+                "name": "zipFileName",
+                "label": "@@generateZipTool.zipFileName@@",
+                "type": "TextField",
+                "required" : "True"
+            },
+            {
+                "name":"zipPassword",
+                "label": "@@generateZipTool.zipPassword@@",
+                "type":"password"
+            }
+        ]
+    }
+]

@@ -16,6 +16,7 @@
             {
                 "name": "formField",
                 "label": "@@generateZipTool.form.formField@@",
+                "description": "@@generateZipTool.from.formField.desc@@",
                 "type" : "TextField",
                 "required" : "True"
             },

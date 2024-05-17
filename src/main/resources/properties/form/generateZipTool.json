@@ -17,7 +17,9 @@
                 "name": "formField",
                 "label": "@@generateZipTool.form.formField@@",
                 "description": "@@generateZipTool.from.formField.desc@@",
-                "type" : "TextField",
+                "type" : "selectbox",
+                "options_ajax_on_change" : "formDefId",
+                "options_ajax" : "[CONTEXT_PATH]/web/json/console/app[APP_PATH]/form/columns/options",
                 "required" : "True"
             },
             {
@@ -40,7 +42,9 @@
             {
                 "name": "targetFormField",
                 "label": "@@generateZipTool.targetFormField@@",
-                "type" : "TextField",
+                "type" : "selectbox",
+                "options_ajax_on_change" : "formDefId:targetFormId",
+                "options_ajax" : "[CONTEXT_PATH]/web/json/console/app[APP_PATH]/form/columns/options",
                 "required" : "True"
             },
             {
@@ -48,6 +52,10 @@
                 "label": "@@generateZipTool.targetRecordId@@",
                 "type" : "TextField",
                 "required" : "True"
+            },
+            {
+                "label" : "@@generateZipTool.encryption@@",
+                "type" : "header"
             },
             {
                 "name": "zipFileName",

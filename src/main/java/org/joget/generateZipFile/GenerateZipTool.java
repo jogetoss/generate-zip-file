@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package org.joget.generateZipFile;
 
 import java.util.Map;
@@ -68,7 +64,7 @@ public class GenerateZipTool extends DefaultApplicationPlugin{
                 
                 //Validate if password is provided 
                 if(!password.isEmpty()){
-                    System.out.println("Password provided");
+                    LogUtil.info(getClassName(), "Password provided");
                     
                     //Define Zip Parameters
                     ZipParameters zipParameters = new ZipParameters();
@@ -85,10 +81,10 @@ public class GenerateZipTool extends DefaultApplicationPlugin{
                             if (file != null && file.exists()) {
                                 zipFile.addFile(file, zipParameters);
                             } else {
-                                System.out.println("File not found: " + fileName);
+                                LogUtil.info(getClassName(), "File not found: " + fileName);
                             }
                         }
-                            System.out.println("Files have been zipped successfully!");
+                            LogUtil.info(getClassName(), "Files have been zipped successfully!");
                         
                             //get target form row
                             FormRowSet targetSet = appService.loadFormData(appDef.getAppId(), appDef.getVersion().toString(), targetFormId, targetRecordId);
@@ -103,14 +99,15 @@ public class GenerateZipTool extends DefaultApplicationPlugin{
                             targetSet.remove(0); 
                             targetSet.add(0, targetRow);
                             appService.storeFormData(appDef.getAppId(), appDef.getVersion().toString(), targetFormId, targetSet, targetRecordId);
-                            System.out.println("Zip File Generated Successfully for [" + targetRecordId + "]");                        
+                            LogUtil.info(getClassName(), "Zip File Generated Successfully for [" + targetRecordId + "]");                    
 
                     }catch(Exception e){
                         LogUtil.error("Zip File (password)", e, e.getMessage());
                     }
                     
                 }else{
-                    System.out.println("No password provided");
+                    LogUtil.info(getClassName(), "No password provided");                    
+
                     //Zip all excel files into 1 zip file
                     try (FileOutputStream fos = new FileOutputStream(newZipFile);
                         ZipOutputStream zos = new ZipOutputStream(fos)) {
@@ -138,10 +135,11 @@ public class GenerateZipTool extends DefaultApplicationPlugin{
                                     // Close the current entry
                                     zos.closeEntry();
                                 } else {
-                                    System.out.println("File not found: " + fileName);
+                                    LogUtil.info(getClassName(), "File not found: " + fileName);
                                 }
                             }
-                            System.out.println("Files have been zipped successfully!");
+                            LogUtil.info(getClassName(), "Files have been zipped successfully!");
+
 
                             //get target form row
                             FormRowSet targetSet = appService.loadFormData(appDef.getAppId(), appDef.getVersion().toString(), targetFormId, targetRecordId);
@@ -156,18 +154,17 @@ public class GenerateZipTool extends DefaultApplicationPlugin{
                             targetSet.remove(0); 
                             targetSet.add(0, targetRow);
                             appService.storeFormData(appDef.getAppId(), appDef.getVersion().toString(), targetFormId, targetSet, targetRecordId);
-                            System.out.println("Zip File Generated Successfully for [" + targetRecordId + "]");
-
-                        }catch (IOException e) {
+                            LogUtil.info(getClassName(), "Zip File Generated Successfully for [" + targetRecordId + "]");
+                        } catch (IOException e) {
                             LogUtil.error("Zip File (no-password)", e, e.getMessage());
                         } 
                     }
     
-                }else{
-                    System.out.println("Form Row not found for ID: " + recordId);
+                } else {
+                    LogUtil.info(getClassName(), "Form Row not found for ID: " + recordId);
                 }
             
-        }catch(Exception e){
+        } catch(Exception e){
             LogUtil.error("App - recordID", e, "Failed to generate Zip File for [" + targetRecordId + "]");
         }
         

@@ -4,7 +4,7 @@
     <groupId>org.joget.generateZipFile</groupId>
     <artifactId>generate-zip-file</artifactId>
     <packaging>bundle</packaging>
-    <version>8.0-SNAPSHOT</version>
+    <version>8.0.0</version>
     <name>generate-zip-file</name>
     <url>http://www.joget.org</url>
     <build>

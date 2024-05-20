@@ -147,12 +147,7 @@ public class GenerateZipTool extends DefaultApplicationPlugin {
                         FormRow targetRow = targetSet.get(0);
 
                         // Add Zip File into selected form field
-                        if (!targetRow.get(targetFormField).toString().isEmpty()) {
-                            targetRow.put(targetFormField, targetRow.get(targetFormField) + ";" + zipFileName);
-                        } else {
-                            targetRow.put(targetFormField, zipFileName);
-                        }
-                        targetSet.remove(0);
+                        targetRow.put(targetFormField, zipFileName);
                         targetSet.add(0, targetRow);
                         appService.storeFormData(appDef.getAppId(), appDef.getVersion().toString(), targetFormId, targetSet, targetRecordId);
                         LogUtil.info(getClassName(), "Zip File Generated Successfully for [" + targetRecordId + "]");
